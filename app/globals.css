@@ -1,8 +1,45 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: SpotifyMixUITitle;
+  src: url(https://encore.scdn.co/fonts/SpotifyMixUITitleVariable-8769ccfde3379b7ebcadd9529b49d0cc.woff2);
+}
+
+@font-face {
+  font-family: SpotifyMixUITitle;
+  font-weight: bold;
+  src: url(https://encore.scdn.co/fonts/SpotifyMixUITitle-Bold-37290f1de77f297fcc26d71e9afcf43f.woff2);
+}
+
+@font-face {
+  font-family: 'SpotifyMixUITitle';
+  src: url(https://encore.scdn.co/fonts/SpotifyMixUITitle-Extrabold-ba6c73cd7f82c81e49cf2204017803ed.woff2)
+    format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+
+}
+
+@font-face {
+  font-family: SpotifyMixUI;
+  src: url(https://encore.scdn.co/fonts/SpotifyMixUI-Regular-cc3b1de388efa4cbca6c75cebc24585e.woff2);
+}
+
+@font-face {
+  font-family: SpotifyMixUI;
+  font-weight: bold;
+  src: url(https://encore.scdn.co/fonts/SpotifyMixUI-Bold-4264b799009b1db5c491778b1bc8e5b7.woff2);
+}
+
+@theme {
+  --color-spotify-dark: #121212;
+  --color-spotify-gray: #1f1f1f;
+  --color-spotify-lightGray: #b3b3b3;
+  --color-spotify-green: #1ed760;
 }
 
 @theme inline {
@@ -10,17 +47,242 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, body {
+    font-family: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, sans-serif !important;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --first-min-width: 180px;
+  --var1-min-width: 120px;
+  --var2-min-width: 120px;
+  --last-min-width: 120px;
+  --panel-gap: 8px;
+  --left-sidebar-grid-area-z-index: 4;
+  --above-everything-except-now-playing-bar-z-index: 5;
+  --above-main-and-now-playing-view-grid-area-z-index: 6;
+  --above-everything-grid-area-z-index: 7;
+  --now-playing-bar-grid-area-z-index: calc(var(--above-everything-except-now-playing-bar-z-index) + 1);
+  --onboarding-search-grid-area-z-index: calc(var(--above-everything-grid-area-z-index) + 1);
+}
+@layer utilities {
+	.mainTitle {
+		font-family: SpotifyMixUITitle
+	}
+  .album {
+    display: grid;
+    grid-template-columns:
+    [index] 16px
+    [first] minmax(180px, 6fr)
+    [var1] minmax(120px, 4fr)
+    [var2] minmax(120px, 3fr)
+    [last] minmax(120px, 1fr);
+  }
+	.track {
+		display: grid;
+		align-items: center;
+	}
+
+	/* PLAYLIST - LIST (5) */
+	.track--playlist-list {
+		grid-template-columns:
+			16px
+			minmax(180px, 4fr)
+			minmax(120px, 2fr)
+			minmax(120px, 2fr)
+			minmax(120px, 1fr);
+	}
+
+	/* PLAYLIST - COMPACT (6) */
+	.track--playlist-compact {
+		grid-template-columns:
+			16px
+			minmax(180px, 4fr)
+			minmax(120px, 2fr)
+			minmax(120px, 2fr)
+			minmax(120px, 2fr)
+			minmax(120px, 1fr);
+	}
+
+	/* ALBUM - LIST (3) */
+	.track--album-list {
+		grid-template-columns:
+			16px
+			minmax(240px, 6fr)
+			minmax(80px, 1fr);
+	}
+
+	/* ALBUM - COMPACT (4) */
+	.track--album-compact {
+		grid-template-columns:
+			16px
+			minmax(200px, 6fr)
+			minmax(120px, 2fr)
+			minmax(80px, 1fr);
+	}
+	/* main settings */
+	/* .main {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-rows: auto 1fr;
+		gap: 10px 10px;
+		grid:
+			"left-sidebar content right-sidebar"
+			"now-playing now-playing now-playing"
+			/ 420px 1fr 420px;
+	}
+	.sidebar { grid-area: sidebar; }
+	.content { grid-area: content; width: 100%;}
+	.right-sidebar {grid-area: right-sidebar;}
+	.now-playing-bar {grid-area: now-playing-bar; } */
+  .app-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-areas:
+      "top-banner top-banner top-banner"
+      "global-nav global-nav global-nav"
+      "left-sidebar main-view right-sidebar"
+      "now-playing-bar now-playing-bar now-playing-bar";
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    padding: 8px;
+    position: relative;
+    background-color: #000;
+  }
+
+  .grid-in-top-banner { grid-area: top-banner; }
+  .grid-in-global-nav { grid-area: global-nav; }
+  .grid-in-left-sidebar { grid-area: left-sidebar; }
+  .grid-in-main-view { grid-area: main-view; }
+  .grid-in-right-sidebar { grid-area: right-sidebar; }
+  .grid-in-now-playing-bar { grid-area: now-playing-bar; }
+
+  .z-left-sidebar { z-index: var(--left-sidebar-grid-area-z-index); }
+  .z-above-main { z-index: var(--above-main-and-now-playing-view-grid-area-z-index); }
+  .z-now-playing { z-index: var(--now-playing-bar-grid-area-z-index); }
+  .z-above-everything { z-index: var(--above-everything-grid-area-z-index); }
+  .cardsWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    justify-items: center;
+    padding: 0 24px;
+  }
 }
